@@ -1,17 +1,53 @@
-
 let gamePattern = [];
 let userClickedPattern = [];
 let buttonColours = ["red", "blue", "green", "yellow"];
 let level = 0;
 // let randomNumber = nextSequence();
 
-
 // Check for user keyboard press 'Enter'
-$(document).on('keypress', function(event) {
-  if(event.which == 13) { //13 is for enter key on all explorers
+// Check for Hotkey inputs
+$(document).on("keypress", function (event) {
+  // Hotkey inputs
+  if (event.key == 1) {
+    playAudio("red");
+    btnAnimate("red");
+
+    // Store into array
+    userClickedPattern.push("red");
+    // Check Answer @@@
+    checkAnswer(userClickedPattern.length - 1);
+  } else if (event.key == 2) {
+    playAudio("blue");
+    btnAnimate("blue");
+
+    // Store into array
+    userClickedPattern.push("blue");
+    // Check Answer @@@
+    checkAnswer(userClickedPattern.length - 1);
+  } else if (event.key == 3) {
+    playAudio("green");
+    btnAnimate("green");
+
+    // Store into array
+    userClickedPattern.push("green");
+    // Check Answer @@@
+    checkAnswer(userClickedPattern.length - 1);
+  } else if (event.key == 4) {
+    playAudio("yellow");
+    btnAnimate("yellow");
+
+    // Store into array
+    userClickedPattern.push("yellow");
+    // Check Answer @@@
+    checkAnswer(userClickedPattern.length - 1);
+  }
+
+  // Start game if user presses Enter
+  if (event.which == 13) {
+    // 13 is for enter key on all explorers
     nextSequence();
-    $("h1").text("Level " + level);
-    // level+=1;
+    $("h1").text("Level 1");
+
   }
 });
 
@@ -20,11 +56,10 @@ function nextSequence() {
   let n = Math.floor(Math.random() * 4);
   let randomChosenColour = buttonColours[n];
 
-  level+=1;
+  level += 1;
   $("h1").text("Level " + level);
 
   // Store color into array
-  console.log("Computer randomly chose: " + randomChosenColour);
   gamePattern.push(randomChosenColour);
   console.log("Computer chosen pattern: " + gamePattern);
 
@@ -36,9 +71,8 @@ function nextSequence() {
   return n;
 }
 
-
 // jQuery to detect buttons CLICK
-$(".btn").on("click", function(event) {
+$(".btn").on("click", function (event) {
   let userChosenColour = event.target.id;
 
   // Play Audio on target
@@ -48,21 +82,17 @@ $(".btn").on("click", function(event) {
 
   // Store into array
   userClickedPattern.push(userChosenColour);
-
   // Check Answer @@@
-  checkAnswer(userClickedPattern.length-1)
+  checkAnswer(userClickedPattern.length - 1);
 
   // Testing debug
   console.log("User chose: " + userChosenColour);
   console.log("Users chosen pattern: " + userClickedPattern);
-
 });
 
 // CHECK ANSWERS @@@
 function checkAnswer(currentLevel) {
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
-    // nextSequence();
-    console.log("yes");
     if (userClickedPattern.length === gamePattern.length) {
       setTimeout(function () {
         nextSequence();
@@ -82,11 +112,10 @@ function checkAnswer(currentLevel) {
 
     // Adjust body style wrong
     $("body").addClass("game-over");
-    setTimeout(function() {
+    setTimeout(function () {
       $("body").removeClass("game-over");
     }, 200);
 
-    console.log("wrong.")
   }
 }
 
@@ -97,7 +126,6 @@ function startOver() {
   userClickedPattern = [];
 }
 
-
 // jQuery Animate Pressed button
 function animatePress(currentColour) {
   $("#" + currentColour).addClass("pressed");
@@ -105,7 +133,6 @@ function animatePress(currentColour) {
     $("#" + currentColour).removeClass("pressed");
   }, 100);
 }
-
 
 // javaScript Animate button
 function btnAnimate(currentKey) {
@@ -148,6 +175,4 @@ function playAudio(key) {
   }
 }
 
-function playSound(name) {
-  
-}
+function playSound(name) {}

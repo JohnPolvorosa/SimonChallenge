@@ -4,38 +4,52 @@
 <head>
   <meta charset="utf-8">
   <title>Simon</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <h1 id="level-title">Press Any Key to Start</h1>
+  <div class="container">
+    <div class="row">
+      <h1 id="level-title">Press Enter to Start</h1>
+    </div>
+    <div class="row">
+      <h2 id="legend">Hotkeys</h2>
+      <h3 id="hotkeys">Red = 1</h3>
+      <h3 id="hotkeys">Blue = 2</h3>
+      <h3 id="hotkeys">Green = 3</h3>
+      <h3 id="hotkeys">Yellow = 4</h3>
+    </div>
+  </div>
+  
   <div class="container">
     <div lass="row">
 
       <div type="button" id="green" class="btn green">
-
+        <!-- <p class ="btnLetters">W</p> -->
       </div>
 
       <div type="button" id="red" class="btn red">
-
+        <!-- <p class ="btnLetters">A</p> -->
       </div>
     </div>
 
     <div class="row">
 
       <div type="button" id="yellow" class="btn yellow">
-
+        <!-- <p class ="btnLetters">S</p> -->
       </div>
       <div type="button" id="blue" class="btn blue">
-
+        <!-- <p class ="btnLetters">D</p> -->
       </div>
 
     </div>
 
   </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="game.js" charset="utf-8"></script>
 </body>
 
